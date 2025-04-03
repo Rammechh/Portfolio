@@ -15,37 +15,6 @@
         }
 
         /* Header Section */
-        /* header {
-            display: flex;
-            align-items: center;
-            background-color: #2980b9;
-            padding: 3rem 2rem;
-            color: white;
-        }
-
-        header img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-right: 2rem;
-            border: 4px solid #fff;
-        }
-
-        header .header-content {
-            max-width: 600px;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            margin: 0;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            font-weight: 300;
-        } */
-
-        /* Header Section */
         header {
             display: flex;
             flex-direction: column;
@@ -77,7 +46,6 @@
             font-size: 1.2rem;
             font-weight: 300;
         }
-
 
         /* Navigation Bar */
         nav {
@@ -140,16 +108,11 @@
         /* Skill and Project List */
         .skills ul, .projects ul {
             padding-left: 20px;
+            list-style-type: disc; /* Ensure default black bullets */
         }
 
         .skills li, .projects li {
             margin-bottom: 1rem;
-        }
-
-        .skills li::before, .projects li::before {
-            content: "• ";
-            color: #1abc9c;
-            font-weight: bold;
         }
 
         /* Footer */
@@ -209,7 +172,7 @@
     <!-- About Section -->
     <section id="about">
         <h2>About Me</h2>
-        <p>I am a passionate Python developer with over 4 years of experience in planning, designing, implementing, and deploying software solutions. Currently working as a Python Developer & SRE Engineer at Accenture, I specialize in backend development, automation, and creating seamless workflows for clients. My journey has been enriched with hands-on experience in Django, REST APIs, and database management, enabling me to drive impactful changes in the tech landscape.</p>
+        <p>I am a passionate Python developer with over 4 years of experience in planning, designing, implementing, and deploying software solutions. Currently working as a Python Developer & SRE Engineer at Accenture, I specialize in backend development, automation, and creating seamless workflows for clients.</p>
     </section>
 
     <!-- Skills Section -->
@@ -233,41 +196,37 @@
     <section id="projects" class="projects">
         <h2>Projects</h2>
         <ul>
-            <li><strong>Voice of Customer (VOC) Survey Management System:</strong> Improved feedback response rates by 30% using Python, Django, REST API, and MSSQL.</li>
-            <li><strong>Process and Report Automation Tool:</strong> Automated client report generation using Excel macros, VBA, and SQL, delivering critical information promptly.</li>
-            <li>
-                <strong>Python-Based Automated IIS Reset & Incident Management:</strong><br>
+            <li><strong>Python-Based Automated IIS Reset & Incident Management:</strong>
                 <ul>
-                    <li>Executes a <strong>PowerShell script via Python</strong> to fetch the application status.</li>
-                    <li>Stores the status results in a <strong>CSV file</strong> for automated analysis.</li>
-                    <li>A <strong>Python script</strong> reads the CSV using Pandas and determines necessary actions.</li>
-                    <li>If an application is <strong>unresponsive or failing</strong>:
+                    <li>Runs a PowerShell script via Python to fetch the application status.</li>
+                    <li>Stores the status results in a CSV file for automated analysis.</li>
+                    <li>A Python script reads the CSV using Pandas and determines necessary actions.</li>
+                    <li>If an application is unresponsive or failing:
                         <ul>
-                            <li><strong>Creates an incident in ServiceNow (SNOW) via API.</strong></li>
-                            <li>Retrieves <strong>server credentials from Delinea (Secret Server) API</strong> securely.</li>
-                            <li>Disables the <strong>server in F5 Load Balancer</strong> before performing any action.</li>
-                            <li><strong>Executes IIS Reset in sequence</strong>:
-                                <ul>
-                                    <li><strong>First resets IIS on app servers</strong>.</li>
-                                    <li>After completion, <strong>resets IIS on web servers</strong>.</li>
+                            <li>Creates an incident in ServiceNow (SNOW) via API.</li>
+                            <li>Retrieves server credentials from Delinea (Secret Server) API securely.</li>
+                            <li>Disables the server in F5 Load Balancer before performing any action.</li>
+                            <li>Executes IIS Reset in sequence:
+                                <ul>https://github.com/Rammechh/Portfolio/blob/main/index.html
+                                    <li>First resets IIS on app servers.</li>
+                                    <li>After completion, resets IIS on web servers.</li>
                                 </ul>
                             </li>
-                            <li>Re-enables the <strong>server in F5 Load Balancer</strong> after recovery.</li>
-                            <li>Updates <strong>ServiceNow worknotes</strong> with reset details.</li>
+                            <li>Re-enables the server in F5 Load Balancer after recovery.</li>
+                            <li>Updates ServiceNow worknotes with reset details.</li>
                         </ul>
                     </li>
-                    <li>If no issues are found, sends a <strong>‘No Issue’</strong> email to the team.</li>
-                    <li>If an incident was created and the reset resolves the issue, <strong>closes the SNOW incident automatically</strong>.</li>
+                    <li>If no issues are found, sends a ‘No Issue’ email to the team.</li>
+                    <li>If an incident was created and the reset resolves the issue, closes the SNOW incident automatically.</li>
                 </ul>
             </li>
-            <li>
-                <strong>GenAI-Powered Ticket Resolution (Quasar++):</strong>
+            <li><strong>GenAI-Powered Ticket Resolution (Quasar++):</strong>
                 <ul>
-                    <li>Developed an <strong>AI-powered ticket resolution system</strong> using <strong>Quasar++</strong>.</li>
-                    <li>Automatically <strong>uploads relevant documentation</strong> to <strong>Quasar++</strong> for processing.</li>
-                    <li>AI analyzes <strong>historical data</strong> and <strong>uploaded docs</strong> to generate <strong>customized resolution steps</strong>.</li>
-                    <li>Updates <strong>ServiceNow ticket worknotes</strong> with AI-suggested solutions for faster resolution.</li>
-                    <li>Enhanced <strong>MTTR (Mean Time to Resolution)</strong> by reducing manual troubleshooting efforts.</li>
+                    <li>Developed an AI-powered ticket resolution system using Quasar++.</li>
+                    <li>Automatically uploads relevant documentation to Quasar++ for processing.</li>
+                    <li>AI analyzes historical data and uploaded docs to generate customized resolution steps.</li>
+                    <li>Updates ServiceNow ticket worknotes with AI-suggested solutions for faster resolution.</li>
+                    <li>Enhanced MTTR (Mean Time to Resolution) by reducing manual troubleshooting efforts.</li>
                 </ul>
             </li>
         </ul>
