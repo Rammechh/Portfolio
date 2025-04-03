@@ -196,7 +196,7 @@
     <section id="projects" class="projects">
         <h2>Projects</h2>
         <ul>
-            <li><strong>Python-Based Automated IIS Reset & Incident Management:</strong>
+            <li><strong>Python-Based Automated IIS Reset</strong>
                 <ul>
                     <li>Runs a PowerShell script via Python to fetch the application status.</li>
                     <li>Stores the status results in a CSV file for automated analysis.</li>
@@ -229,6 +229,21 @@
                     <li>Enhanced MTTR (Mean Time to Resolution) by reducing manual troubleshooting efforts.</li>
                 </ul>
             </li>
+            <li>  
+                <strong>Incident-Based Auto Recovery & Ticket Management:</strong>  
+                <ul>  
+                    <li>Integrated with an <strong>existing incident management system</strong> to automate issue resolution.</li>  
+                    <li>When a ticket is created for a <strong>down service</strong>, our workflow <strong>automatically picks up the incident</strong>.</li>  
+                    <li>Checks the service status:  
+                        <ul>  
+                            <li>If the service is <strong>down and marked as automatic</strong>, it is restarted.</li>  
+                            <li>After recovery, updates <strong>ServiceNow ticket worknotes</strong> and <strong>closes the incident</strong>.</li>  
+                            <li>In other cases, updates worknotes, keeps the ticket on hold, and notifies the <strong>relevant support team</strong>.</li>  
+                        </ul>  
+                    </li>  
+                    <li>Reduces manual intervention, improving <strong>MTTR (Mean Time to Resolution)</strong>.</li>  
+                </ul>  
+            </li>  
             <li>  
                 <strong>Microsoft Graph API-Based Profile Picture Update:</strong>  
                 <ul>  
