@@ -235,15 +235,29 @@
         <ul>
             <li><strong>Voice of Customer (VOC) Survey Management System:</strong> Improved feedback response rates by 30% using Python, Django, REST API, and MSSQL.</li>
             <li><strong>Process and Report Automation Tool:</strong> Automated client report generation using Excel macros, VBA, and SQL, delivering critical information promptly.</li>
-            <li><strong>IIS Reset Automation:</strong> Reduced 80-minute manual server reset processes to 2 minutes for seamless production deployment.</li>
             <li>
-                <strong>IIS Health Check & Automated Incident Management:</strong><br>
+                <strong>Python-Based Automated IIS Reset & Incident Management:</strong><br>
                 <ul>
-                    <li>Runs a PowerShell-based <strong>health check</strong> and analyzes results from CSV.</li>
-                    <li>If issues are found, <strong>creates an incident in ServiceNow (SNOW) via API</strong>.</li>
-                    <li>Securely <strong>retrieves credentials from Delinea (Secret Server) API</strong>.</li>
-                    <li>Performs <strong>IIS Reset</strong> if required and sends email notifications.</li>
-                    <li>If no issues are found, sends a <strong>‘No Issue’</strong> email and <strong>closes the SNOW incident</strong> if opened.</li>
+                    <li>Executes a <strong>PowerShell script via Python</strong> to fetch the application status.</li>
+                    <li>Stores the status results in a <strong>CSV file</strong> for automated analysis.</li>
+                    <li>A <strong>Python script</strong> reads the CSV using Pandas and determines necessary actions.</li>
+                    <li>If an application is <strong>unresponsive or failing</strong>:
+                        <ul>
+                            <li><strong>Creates an incident in ServiceNow (SNOW) via API.</strong></li>
+                            <li>Retrieves <strong>server credentials from Delinea (Secret Server) API</strong> securely.</li>
+                            <li>Disables the <strong>server in F5 Load Balancer</strong> before performing any action.</li>
+                            <li><strong>Executes IIS Reset in sequence</strong>:
+                                <ul>
+                                    <li><strong>First resets IIS on app servers</strong>.</li>
+                                    <li>After completion, <strong>resets IIS on web servers</strong>.</li>
+                                </ul>
+                            </li>
+                            <li>Re-enables the <strong>server in F5 Load Balancer</strong> after recovery.</li>
+                            <li>Updates <strong>ServiceNow worknotes</strong> with reset details.</li>
+                        </ul>
+                    </li>
+                    <li>If no issues are found, sends a <strong>‘No Issue’</strong> email to the team.</li>
+                    <li>If an incident was created and the reset resolves the issue, <strong>closes the SNOW incident automatically</strong>.</li>
                 </ul>
             </li>
             <li>
