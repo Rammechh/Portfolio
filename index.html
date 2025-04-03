@@ -194,69 +194,41 @@
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li><strong>Python-Based Automated IIS Reset</strong>
-                <ul>
-                    <li>Runs a PowerShell script via Python to fetch the application status.</li>
-                    <li>Stores the status results in a CSV file for automated analysis.</li>
-                    <li>A Python script reads the CSV using Pandas and determines necessary actions.</li>
-                    <li>If an application is unresponsive or failing:
-                        <ul>
-                            <li>Creates an incident in ServiceNow (SNOW) via API.</li>
-                            <li>Retrieves server credentials from Delinea (Secret Server) API securely.</li>
-                            <li>Disables the server in F5 Load Balancer before performing any action.</li>
-                            <li>Executes IIS Reset in sequence:
-                                <ul>
-                                    <li>First resets IIS on app servers.</li>
-                                    <li>After completion, resets IIS on web servers.</li>
-                                </ul>
-                            </li>
-                            <li>Re-enables the server in F5 Load Balancer after recovery.</li>
-                            <li>Updates ServiceNow worknotes with reset details.</li>
-                        </ul>
-                    </li>
-                    <li>If no issues are found, sends a ‘No Issue’ email to the team.</li>
-                    <li>If an incident was created and the reset resolves the issue, closes the SNOW incident automatically.</li>
-                </ul>
-            </li>
-            <li><strong>GenAI-Powered Ticket Resolution (Quasar++):</strong>
-                <ul>
-                    <li>Developed an AI-powered ticket resolution system using Quasar++.</li>
-                    <li>Automatically uploads relevant documentation to Quasar++ for processing.</li>
-                    <li>AI analyzes historical data and uploaded docs to generate customized resolution steps.</li>
-                    <li>Updates ServiceNow ticket worknotes with AI-suggested solutions for faster resolution.</li>
-                    <li>Enhanced MTTR (Mean Time to Resolution) by reducing manual troubleshooting efforts.</li>
-                </ul>
-            </li>
-            <li>  
-                <strong>Incident-Based Auto Recovery & Ticket Management:</strong>  
-                <ul>  
-                    <li>Integrated with an <strong>existing incident management system</strong> to automate issue resolution.</li>  
-                    <li>When a ticket is created for a <strong>down service</strong>, our workflow <strong>automatically picks up the incident</strong>.</li>  
-                    <li>Checks the service status:  
-                        <ul>  
-                            <li>If the service is <strong>down and marked as automatic</strong>, it is restarted.</li>  
-                            <li>After recovery, updates <strong>ServiceNow ticket worknotes</strong> and <strong>closes the incident</strong>.</li>  
-                            <li>In other cases, updates worknotes, keeps the ticket on hold, and notifies the <strong>relevant support team</strong>.</li>  
-                        </ul>  
-                    </li>  
-                    <li>Reduces manual intervention, improving <strong>MTTR (Mean Time to Resolution)</strong>.</li>  
-                </ul>  
-            </li>  
-            <li>  
-                <strong>Microsoft Graph API-Based Profile Picture Update:</strong>  
-                <ul>  
-                    <li>Developed an automated workflow to update <strong>Microsoft 365 profile pictures</strong> across all services.</li>  
-                    <li>Registered an app in <strong>Azure AD</strong> and granted <strong>User.ReadWrite.All</strong> permissions.</li>  
-                    <li>Workflow picks profile pictures from <strong>SharePoint</strong> and uploads them using <strong>Microsoft Graph API</strong>.</li>  
-                    <li>Once uploaded, moves the images to an <strong>archive folder</strong> for record-keeping.</li>  
-                    <li>Ensures profile pictures are updated <strong>across all Microsoft 365 services</strong>, including Outlook, Teams, and SharePoint.</li>  
-                </ul>  
-            </li>  
-            <li><strong>Voice of Customer (VOC) Survey Management System:</strong> Improved feedback response rates by 30% using Python, Django, REST API, and MSSQL.</li>
-        </ul>
-    </section>
+    <h2>Projects</h2>
+    <ul>
+        <li><strong>Automated IIS Reset & Incident Management</strong>  
+            <ul>
+                <li>Developed a <strong>Python-PowerShell workflow</strong> to detect and resolve IIS failures across <strong>8 servers in 2 minutes</strong>.</li>
+                <li>Integrated with <strong>ServiceNow API</strong> to auto-create incidents, update worknotes, and close tickets post-recovery.</li>
+                <li>Implemented <strong>F5 Load Balancer automation</strong> for seamless traffic management during resets.</li>
+            </ul>
+        </li>
+        <li><strong>GenAI-Driven Ticket Resolution (Quasar++)</strong>  
+            <ul>
+                <li>Leveraged <strong>AI-powered ticket resolution</strong> with Quasar++, reducing MTTR by analyzing historical data.</li>
+                <li>Automated <strong>knowledge base updates</strong> and enriched <strong>ServiceNow worknotes</strong> with AI-generated solutions.</li>
+            </ul>
+        </li>
+        <li><strong>Incident-Based Auto Recovery</strong>  
+            <ul>
+                <li>Designed a <strong>self-healing system</strong> that auto-detects & restarts failed services, closing tickets post-recovery.</li>
+                <li>For unresolved issues, <strong>smart routing</strong> notifies relevant teams with enriched diagnostics.</li>
+            </ul>
+        </li>
+        <li><strong>Microsoft 365 Profile Picture Automation</strong>  
+            <ul>
+                <li>Automated profile updates across <strong>Teams, Outlook, and SharePoint</strong> using <strong>Microsoft Graph API</strong>.</li>
+                <li>Integrated <strong>Azure AD authentication</strong> and optimized image workflows from <strong>SharePoint</strong>.</li>
+            </ul>
+        </li>
+        <li><strong>VOC Survey Management System</strong>  
+            <ul>
+                <li>Built a <strong>Django-REST-based survey platform</strong>, increasing feedback response rates by <strong>30%</strong>.</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
