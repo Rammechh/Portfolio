@@ -235,6 +235,16 @@
             <li><strong>Voice of Customer (VOC) Survey Management System:</strong> Improved feedback response rates by 30% using Python, Django, REST API, and MSSQL.</li>
             <li><strong>Process and Report Automation Tool:</strong> Automated client report generation using Excel macros, VBA, and SQL, delivering critical information promptly.</li>
             <li><strong>IIS Reset Automation:</strong> Reduced 80-minute manual server reset processes to 2 minutes for seamless production deployment.</li>
+            <li>
+                <strong>IIS Health Check & Automated Incident Management:</strong><br>
+                <ul>
+                    <li>Runs a PowerShell-based **health check** and analyzes results from CSV.</li>
+                    <li>If issues are found, **creates an incident in ServiceNow (SNOW) via API**.</li>
+                    <li>Securely **retrieves credentials from Delinea (Secret Server) API**.</li>
+                    <li>Performs **IIS Reset** if required and sends email notifications.</li>
+                    <li>If no issues are found, sends a **‘No Issue’** email and **closes the SNOW incident** if opened.</li>
+                </ul>
+            </li>
         </ul>
     </section>
 
