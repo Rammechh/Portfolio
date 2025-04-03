@@ -178,6 +178,7 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <h2>Skills</h2>
+        <div class="skills-container">
             <ul>
                 <li>Python</li>
                 <li>Django</li>
@@ -189,6 +190,8 @@
                 <li>SSIS</li>
                 <li>Data Structures & Algorithms</li>
                 <li>JAMS</li>
+            </ul>
+            <ul>
                 <li>PowerShell</li>
                 <li>Microsoft Graph API</li>
                 <li>ServiceNow API</li>
@@ -198,13 +201,22 @@
                 <li>CI/CD</li>
                 <li>GenAI</li>
                 <li>NLP</li>
-                <li>Pandas</li>
-                <li>NumPy</li>
                 <li>Windows Server</li>
-                <li>TCP/IP</li>
-                <li>Load Balancing</li>
             </ul>
+        </div>
     </section>
+
+<style>
+    .skills-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .skills-container ul {
+        list-style: none;
+        padding: 0;
+        width: 45%;
+    }
+</style>
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
