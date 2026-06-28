@@ -1,279 +1,822 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramkumar Haribaskar - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f1f6;
-            color: #333;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramkumar Haribaskar — Python Developer &amp; Site Reliability Engineer</title>
+<meta name="description" content="Portfolio of Ramkumar Haribaskar — Python Developer and Site Reliability Engineer building automation, self-healing systems, and GenAI-assisted incident resolution.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0C1222;
+    --panel:#121A2E;
+    --panel-2:#172238;
+    --line:#232E47;
+    --line-soft:#1A2438;
+    --text:#E7EAF2;
+    --muted:#8E9AB3;
+    --muted-2:#5E6B85;
+    --mint:#3FBF8A;
+    --mint-dim:rgba(63,191,138,0.12);
+    --amber:#E8A23D;
+    --amber-dim:rgba(232,162,61,0.14);
+    --radius:10px;
+    --maxw:1120px;
+    --font-display:'Space Grotesk',sans-serif;
+    --font-body:'Inter',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+  }
 
-        /* Header Section */
-        header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #2980b9;
-            padding: 3rem 2rem;
-            color: white;
-            text-align: center;
-        }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  ::selection{background:var(--mint-dim);color:var(--text);}
 
-        header img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-            border: 4px solid #fff;
-        }
+  :focus-visible{
+    outline:2px solid var(--mint);
+    outline-offset:3px;
+    border-radius:4px;
+  }
 
-        header .header-content {
-            max-width: 600px;
-        }
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 24px;
+  }
 
-        header h1 {
-            font-size: 3rem;
-            margin: 0;
-        }
+  section{scroll-margin-top:84px;}
 
-        header p {
-            font-size: 1.2rem;
-            font-weight: 300;
-        }
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(12,18,34,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav__inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 24px;
+    max-width:var(--maxw);
+    margin:0 auto;
+  }
+  .nav__brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--font-mono);
+    font-weight:600;
+    text-decoration:none;
+    font-size:14px;
+    letter-spacing:0.02em;
+  }
+  .nav__mark{
+    width:30px;height:30px;
+    border-radius:8px;
+    background:var(--panel-2);
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;
+    color:var(--mint);
+  }
+  .nav__links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+    margin:0;padding:0;
+  }
+  .nav__links a{
+    text-decoration:none;
+    color:var(--muted);
+    font-size:14px;
+    font-weight:500;
+    transition:color .2s ease;
+  }
+  .nav__links a:hover{color:var(--text);}
+  .nav__cta{
+    display:flex;align-items:center;gap:14px;
+  }
+  .btn-ghost{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--mint);
+    text-decoration:none;
+    border:1px solid var(--line);
+    padding:7px 14px;
+    border-radius:7px;
+    transition:border-color .2s ease, background .2s ease;
+    white-space:nowrap;
+  }
+  .btn-ghost:hover{border-color:var(--mint);background:var(--mint-dim);}
+  .nav__toggle{display:none;}
 
-        /* Navigation Bar */
-        nav {
-            background: #34495e;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+  @media (max-width:760px){
+    .nav__links{display:none;}
+    .nav__toggle{
+      display:inline-flex;
+      background:none;border:1px solid var(--line);
+      color:var(--text);border-radius:7px;
+      width:36px;height:36px;align-items:center;justify-content:center;
+      font-size:16px;cursor:pointer;
+    }
+    .nav.is-open .nav__links{
+      display:flex;
+      flex-direction:column;
+      position:absolute;
+      top:60px;left:0;right:0;
+      background:var(--panel);
+      border-bottom:1px solid var(--line);
+      padding:18px 24px;
+      gap:16px;
+    }
+  }
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            margin: 0;
-            padding: 1rem 0;
-        }
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:72px 0 80px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .hero__grid{
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--mint);
+    margin-bottom:22px;
+  }
+  .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--mint);
+    box-shadow:0 0 0 0 rgba(63,191,138,0.6);
+    animation:pulse 2.2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(63,191,138,0.45);}
+    70%{box-shadow:0 0 0 8px rgba(63,191,138,0);}
+    100%{box-shadow:0 0 0 0 rgba(63,191,138,0);}
+  }
+  h1.name{
+    font-family:var(--font-display);
+    font-size:clamp(2.4rem,5vw,3.4rem);
+    font-weight:700;
+    margin:0 0 10px;
+    letter-spacing:-0.01em;
+  }
+  .role{
+    font-family:var(--font-display);
+    font-size:1.15rem;
+    color:var(--muted);
+    font-weight:500;
+    margin:0 0 20px;
+  }
+  .pitch{
+    color:var(--muted);
+    max-width:480px;
+    margin:0 0 32px;
+    font-size:1.02rem;
+  }
+  .pitch strong{color:var(--text);font-weight:600;}
 
-        nav ul li {
-            margin: 0 2rem;
-        }
+  .chips{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-bottom:34px;
+  }
+  .chip{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:14px 16px;
+  }
+  .chip__num{
+    font-family:var(--font-mono);
+    font-size:1.3rem;
+    font-weight:600;
+    color:var(--amber);
+    display:block;
+    margin-bottom:4px;
+  }
+  .chip__label{
+    font-size:12.5px;
+    color:var(--muted);
+    line-height:1.4;
+  }
 
-        nav ul li a {
-            color: #ecf0f1;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
+  .hero__actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn-solid{
+    background:var(--mint);
+    color:#08130E;
+    font-weight:600;
+    text-decoration:none;
+    padding:11px 20px;
+    border-radius:8px;
+    font-size:14.5px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-solid:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(63,191,138,0.25);}
+  .btn-outline{
+    border:1px solid var(--line);
+    color:var(--text);
+    text-decoration:none;
+    padding:11px 20px;
+    border-radius:8px;
+    font-size:14.5px;
+    transition:border-color .15s ease;
+  }
+  .btn-outline:hover{border-color:var(--muted);}
 
-        nav ul li a:hover {
-            color: #1abc9c;
-        }
+  /* console */
+  .console{
+    background:#0A0F1C;
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 24px 60px -20px rgba(0,0,0,0.6);
+  }
+  .console__bar{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 14px;
+    border-bottom:1px solid var(--line-soft);
+    background:var(--panel);
+  }
+  .console__bar span{
+    width:9px;height:9px;border-radius:50%;
+    background:var(--muted-2);
+  }
+  .console__title{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    color:var(--muted);
+    margin-left:6px;
+  }
+  .console__body{
+    font-family:var(--font-mono);
+    font-size:12.6px;
+    line-height:1.85;
+    padding:18px 16px;
+    min-height:268px;
+    color:#B9C4DA;
+    white-space:pre-wrap;
+  }
+  .console__body .ok{color:var(--mint);}
+  .console__body .warn{color:var(--amber);}
+  .console__body .dim{color:var(--muted-2);}
+  .cursor{
+    display:inline-block;
+    width:7px;height:13px;
+    background:var(--mint);
+    margin-left:2px;
+    vertical-align:-2px;
+    animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
 
-        /* Section Styling */
-        section {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 4rem 2rem;
-            max-width: 900px;
-            margin: auto;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            margin-top: 2rem;
-        }
+  @media (max-width:900px){
+    .hero__grid{grid-template-columns:1fr;gap:40px;}
+    .chips{grid-template-columns:repeat(2,1fr);}
+  }
 
-        section h2 {
-            color: #2980b9;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
+  /* ---------- SECTION HEADERS ---------- */
+  .section{padding:84px 0;}
+  .section--alt{background:var(--panel);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
+  .kicker{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--mint);
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    margin:0 0 10px;
+  }
+  .section__title{
+    font-family:var(--font-display);
+    font-size:clamp(1.6rem,3vw,2.1rem);
+    font-weight:700;
+    margin:0 0 16px;
+  }
+  .section__lead{
+    color:var(--muted);
+    max-width:600px;
+    margin-bottom:48px;
+  }
 
-        section p, section ul {
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
+  .reveal.pre{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.pre.is-visible{opacity:1;transform:translateY(0);}
 
-        /* Skill and Project List */
-        .skills ul, .projects ul {
-            padding-left: 20px;
-            list-style-type: disc; /* Ensure default black bullets */
-        }
+  /* ---------- ABOUT ---------- */
+  .about__grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:start;
+  }
+  .about p{color:var(--muted);margin:0 0 16px;}
+  .about p strong{color:var(--text);}
+  .about__facts{
+    display:grid;
+    gap:14px;
+  }
+  .fact{
+    display:flex;
+    gap:14px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:14px 16px;
+    background:var(--bg);
+  }
+  .fact__k{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--muted-2);
+    min-width:84px;
+  }
+  .fact__v{font-size:14.5px;}
+  @media (max-width:800px){.about__grid{grid-template-columns:1fr;}}
 
-        .skills li, .projects li {
-            margin-bottom: 1rem;
-        }
+  /* ---------- SKILLS ---------- */
+  .skill-groups{display:grid;gap:26px;}
+  .skill-group__name{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--muted);
+    margin:0 0 12px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  .pills{display:flex;flex-wrap:wrap;gap:9px;}
+  .pill{
+    border:1px solid var(--line);
+    background:var(--bg);
+    color:var(--text);
+    font-size:13.5px;
+    padding:7px 13px;
+    border-radius:999px;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .pill:hover{border-color:var(--mint);color:var(--mint);}
 
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+  /* ---------- EXPERIENCE ---------- */
+  .timeline{
+    border-left:1px solid var(--line);
+    padding-left:32px;
+    display:grid;
+    gap:48px;
+  }
+  .tl-item{position:relative;}
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left:-37.5px;
+    top:4px;
+    width:11px;height:11px;
+    border-radius:50%;
+    background:var(--bg);
+    border:2px solid var(--mint);
+  }
+  .tl-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:6px;
+  }
+  .tl-role{font-family:var(--font-display);font-weight:600;font-size:1.08rem;}
+  .tl-date{font-family:var(--font-mono);font-size:12.5px;color:var(--muted-2);}
+  .tl-org{color:var(--mint);font-size:14px;font-weight:500;margin-bottom:14px;}
+  .tl-list{margin:0;padding-left:18px;color:var(--muted);display:grid;gap:10px;}
+  .tl-list li::marker{color:var(--muted-2);}
+  .tl-list b{color:var(--text);}
 
-        footer a {
-            color: #1abc9c;
-            text-decoration: none;
-        }
+  /* ---------- PROJECTS ---------- */
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+  }
+  .card{
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .card:hover{transform:translateY(-3px);border-color:var(--mint);}
+  .card__impact{
+    font-family:var(--font-mono);
+    font-size:1.05rem;
+    color:var(--amber);
+    font-weight:600;
+    margin-bottom:10px;
+    display:inline-block;
+  }
+  .card__title{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:1.02rem;
+    margin:0 0 8px;
+  }
+  .card__text{color:var(--muted);font-size:14px;margin:0;}
+  @media (max-width:900px){.cards{grid-template-columns:1fr 1fr;}}
+  @media (max-width:600px){.cards{grid-template-columns:1fr;}}
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
+  /* ---------- EDUCATION ---------- */
+  .edu-row{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .edu-card{
+    flex:1;
+    min-width:240px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px;
+    background:var(--panel);
+  }
+  .edu-card__k{font-family:var(--font-mono);font-size:12px;color:var(--mint);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em;}
+  .edu-card__v{font-size:14.5px;color:var(--text);}
+  .edu-card__sub{font-size:13px;color:var(--muted);margin-top:4px;}
 
-            nav ul {
-                flex-direction: column;
-                padding: 0;
-            }
+  /* ---------- CONTACT ---------- */
+  .contact{
+    text-align:center;
+  }
+  .contact .section__title{margin-bottom:14px;}
+  .status-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--mint);
+    border:1px solid var(--mint);
+    background:var(--mint-dim);
+    padding:7px 16px;
+    border-radius:999px;
+    margin-bottom:26px;
+  }
+  .contact__links{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-top:18px;
+  }
 
-            nav ul li {
-                margin: 1rem 0;
-            }
-        }
-     
-    </style>
+  footer{
+    border-top:1px solid var(--line-soft);
+    padding:28px 0;
+    text-align:center;
+    color:var(--muted-2);
+    font-size:13px;
+    font-family:var(--font-mono);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+    .reveal{opacity:1;transform:none;}
+  }
+</style>
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header>
-        <img src="Ram.jpg" alt="Ramkumar Haribaskar">
-        <div class="header-content">
-            <h1>Ramkumar Haribaskar</h1>
-            <p>Python Developer | Analyst | Automation Enthusiast</p>
-        </div>
-    </header>
-
-    <!-- Navigation Bar -->
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            I am a passionate <strong>Python Developer</strong> with <strong>5+ years</strong> of experience in designing, automating, and optimizing backend solutions.  
-            Currently working as a <strong>Python Developer & SRE Engineer at Accenture</strong>, I specialize in <strong>automation, workflow optimization, and backend engineering</strong>,  
-            delivering <strong>scalable and efficient</strong> solutions that <strong>reduce manual effort, enhance system reliability, and drive business success</strong>.
-        </p>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <h2>Skills</h2>
-        <div class="skills-container">
-            <ul>
-                <li>Python</li>
-                <li>Django</li>
-                <li>REST API</li>
-                <li>MSSQL / Sybase</li>
-                <li>Docker</li>
-                <li>HTML / CSS</li>
-                <li>Git</li>
-                <li>SSIS</li>
-                <li>Data Structures & Algorithms</li>
-                <li>JAMS</li>
-            </ul>
-            <ul>
-                <li>PowerShell</li>
-                <li>Microsoft Graph API</li>
-                <li>ServiceNow API</li>
-                <li>F5 Load Balancer</li>
-                <li>Azure AD</li>
-                <li>OAuth</li>
-                <li>CI/CD</li>
-                <li>GenAI</li>
-                <li>NLP</li>
-                <li>Windows Server</li>
-            </ul>
-        </div>
-    </section>
-
-<style>
-    .skills-container {
-        display: flex;
-        justify-content: space-between;
-    }
-    .skills-container ul {
-        list-style: none;
-        padding: 0;
-        width: 45%;
-    }
-</style>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-    <h2>Projects</h2>
-    <ul>
-        <li><strong>Automated IIS Reset & Incident Management</strong>  
-            <ul>
-                <li>Developed a <strong>Python-Powershell workflow</strong> to detect and resolve IIS failures across <strong>multiple servers in short time</strong>.</li>
-                <li>Integrated with <strong>ServiceNow API</strong> to auto-create incidents, update worknotes, and close tickets post-recovery.</li>
-            </ul>
-        </li>
-        <li><strong>GenAI-Driven Ticket Resolution</strong>  
-            <ul>
-                <li>Leveraged <strong>AI-powered ticket resolution</strong>, reducing MTTR by analyzing historical data.</li>
-                <li>Automated <strong>knowledge base updates</strong> and enriched <strong>ServiceNow worknotes</strong> with AI-generated solutions.</li>
-            </ul>
-        </li>
-        <li><strong>Incident-Based Auto Recovery</strong>  
-            <ul>
-                <li>Designed a <strong>self-healing system</strong> that auto-detects & restarts failed services, closing tickets post-recovery.</li>
-                <li>For unresolved issues, <strong>smart routing</strong> notifies relevant teams with enriched diagnostics.</li>
-            </ul>
-        </li>
-        <li><strong>Microsoft 365 Profile Picture Automation</strong>  
-            <ul>
-                <li>Automated profile updates across <strong>Teams, Outlook, and SharePoint</strong> using <strong>Microsoft Graph API</strong>.</li>
-                <li>Integrated <strong>Azure AD authentication</strong> and optimized image workflows from <strong>SharePoint</strong>.</li>
-            </ul>
-        </li>
-        <li><strong>VOC Survey Management System</strong>  
-            <ul>
-                <li>Built a <strong>Django-REST-based survey platform</strong>, increasing feedback response rates by <strong>30%</strong>.</li>
-            </ul>
-        </li>
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__brand">
+      <span class="nav__mark">RH</span>
+      Ramkumar Haribaskar
+    </a>
+    <ul class="nav__links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="nav__cta">
+      <a class="btn-ghost" href="mailto:rammechk@gmail.com">Email me</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero__grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> STATUS: OPEN TO OPPORTUNITIES</div>
+      <h1 class="name">Ramkumar Haribaskar</h1>
+      <p class="role">Python Developer &amp; Site Reliability Engineer</p>
+      <p class="pitch">I build automation that catches problems <strong>before they page anyone</strong> — self-healing scripts, GenAI-assisted ticket resolution, and Python workflows that quietly remove hundreds of hours of manual ops work a year.</p>
+
+      <div class="chips">
+        <div class="chip"><span class="chip__num">60+ hrs/mo</span><span class="chip__label">cut from ticket research with GenAI-assisted resolution</span></div>
+        <div class="chip"><span class="chip__num">53 hrs/mo</span><span class="chip__label">of manual review automated away (CMDB, certs, disk health)</span></div>
+        <div class="chip"><span class="chip__num">100+</span><span class="chip__label">production releases shipped across 5 applications</span></div>
+        <div class="chip"><span class="chip__num">5</span><span class="chip__label">engineers led &amp; mentored on the SRE team</span></div>
+      </div>
+
+      <div class="hero__actions">
+        <a class="btn-solid" href="mailto:rammechk@gmail.com">Get in touch</a>
+        <a class="btn-outline" href="https://www.linkedin.com/in/ramkumar-haribaskar/" target="_blank" rel="noopener">View LinkedIn</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="console" role="img" aria-label="Animated terminal log showing automated incident detection and resolution">
+        <div class="console__bar">
+          <span></span><span></span><span></span>
+          <span class="console__title">ops-monitor — live</span>
+        </div>
+        <div class="console__body" id="consoleBody"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="about">
+  <div class="wrap about__grid">
+    <div class="reveal">
+      <p class="kicker">About</p>
+      <h2 class="section__title">Six years of keeping systems quiet</h2>
+      <p>I started as a mechanical engineer, then moved into <strong>Python development and Site Reliability Engineering</strong> — and found I liked the problem more than the original degree. Most of my work lives at the intersection of <strong>automation, monitoring, and AI-assisted operations</strong>: catching a failing certificate before it expires, restarting a stalled IIS pool before a customer notices, or letting a language model draft the first pass of a ticket resolution.</p>
+      <p>At Accenture, that work earned the <strong>ACE Award</strong> for automation excellence. I currently lead and mentor a 5-person SRE team, and split my time between writing the automation itself and helping the rest of the team think in those terms.</p>
+    </div>
+    <div class="about__facts reveal">
+      <div class="fact"><span class="fact__k">based in</span><span class="fact__v">India</span></div>
+      <div class="fact"><span class="fact__k">currently</span><span class="fact__v">Packaged App Developer Senior Analyst, Accenture</span></div>
+      <div class="fact"><span class="fact__k">focus</span><span class="fact__v">Python automation, SRE, GenAI-assisted operations</span></div>
+      <div class="fact"><span class="fact__k">recognition</span><span class="fact__v">Accenture ACE Award — automation excellence</span></div>
+    </div>
+  </div>
 </section>
 
+<section class="section section--alt" id="skills">
+  <div class="wrap">
+    <p class="kicker reveal">Skills</p>
+    <h2 class="section__title reveal">What I build with</h2>
+    <p class="section__lead reveal">Grouped by what each tool is actually for, not just a wordcloud.</p>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:rammechk@gmail.com">rammechk@gmail.com</a></p>
-        <p>Phone: +91 8072246160</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/ramkumar-haribaskar/">linkedin.com/in/ramkumar-haribaskar</a></p>
-    </section>
+    <div class="skill-groups">
+      <div class="reveal">
+        <p class="skill-group__name">Languages &amp; Frameworks</p>
+        <div class="pills">
+          <span class="pill">Python</span><span class="pill">Django</span><span class="pill">PowerShell</span>
+          <span class="pill">REST APIs</span><span class="pill">HTML/CSS</span><span class="pill">Data Structures &amp; Algorithms</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="skill-group__name">Automation &amp; DevOps</p>
+        <div class="pills">
+          <span class="pill">JAMS</span><span class="pill">Rundeck</span><span class="pill">WinRM</span>
+          <span class="pill">Docker</span><span class="pill">Git</span><span class="pill">Azure Repos</span><span class="pill">CI/CD</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="skill-group__name">Platforms &amp; Integrations</p>
+        <div class="pills">
+          <span class="pill">ServiceNow API</span><span class="pill">Microsoft Graph API</span>
+          <span class="pill">Azure AD</span><span class="pill">OpenAI API</span><span class="pill">OAuth</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="skill-group__name">Data &amp; ETL</p>
+        <div class="pills">
+          <span class="pill">MSSQL</span><span class="pill">Sybase</span><span class="pill">SSIS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2024 Ramkumar Haribaskar. All Rights Reserved.</p>
-    </footer>
+<section class="section" id="experience">
+  <div class="wrap">
+    <p class="kicker reveal">Experience</p>
+    <h2 class="section__title reveal">Where the automation got built</h2>
+
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-head">
+          <span class="tl-role">Packaged App Developer Senior Analyst</span>
+          <span class="tl-date">Aug 2024 — Present</span>
+        </div>
+        <p class="tl-org">Accenture · Python Developer &amp; SRE · ACE Award recipient</p>
+        <ul class="tl-list">
+          <li>Deployed automated end-of-life / end-of-support alerts via <b>ServiceNow CMDB</b> integration, flagging at-risk assets before they cause outages — <b>~20 hrs/month</b> of review work removed.</li>
+          <li>Automated certificate-expiry monitoring and alerting to prevent service disruption — <b>~13 hrs/month</b> freed up.</li>
+          <li>Maintained Linux and Windows server disk health through automated cleanup scheduled via <b>Rundeck</b> — <b>~20 hrs/month</b> of manual cleanup eliminated.</li>
+          <li>Manage source control in Azure Repos and orchestrate remote automation via Rundeck (WinRM), integrated with the ServiceNow API to speed up incident response.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-head">
+          <span class="tl-role">Software Engineer</span>
+          <span class="tl-date">Oct 2019 — Aug 2024</span>
+        </div>
+        <p class="tl-org">Cognizant Technology Solutions</p>
+        <ul class="tl-list">
+          <li>Delivered <b>100+ releases</b> across 5 major applications through structured change management, with pre- and post-deployment health checks.</li>
+          <li>Optimized MSSQL/Sybase operations and led data-patch remediation, improving data-processing efficiency by <b>30%</b> without sacrificing integrity.</li>
+          <li>Led a 3-member team resolving high-priority bugs and vulnerabilities flagged by code and application scans.</li>
+          <li>Spearheaded a Voice of Customer survey initiative that contributed to a <b>30% increase</b> in customer satisfaction scores.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="projects">
+  <div class="wrap">
+    <p class="kicker reveal">Projects</p>
+    <h2 class="section__title reveal">Automation that ships, not just demos</h2>
+    <p class="section__lead reveal">Each of these is in production and tied to a measurable amount of time it gives back.</p>
+
+    <div class="cards">
+      <div class="card reveal">
+        <span class="card__impact">−60+ hrs/mo</span>
+        <h3 class="card__title">GenAI-Powered Ticket Resolution</h3>
+        <p class="card__text">Configured an internal AI knowledge platform's semantic search with the OpenAI API to auto-draft resolution notes for incoming tickets, cutting research time and reducing MTTR.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card__impact">−20 hrs/mo</span>
+        <h3 class="card__title">Automated EOL/EOS Risk Alerts</h3>
+        <p class="card__text">ServiceNow CMDB integration that flags at-risk systems and software before they cause outages, removing a recurring manual review cycle.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card__impact">−13 hrs/mo</span>
+        <h3 class="card__title">Certificate Expiry Monitoring</h3>
+        <p class="card__text">Automated certificate-expiry checks and email alerts that prevent service disruption from expired certs slipping through.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card__impact">−20 hrs/mo</span>
+        <h3 class="card__title">Disk Health Automation</h3>
+        <p class="card__text">Scheduled Rundeck cleanup jobs across Linux and Windows servers, keeping disk health steady without manual intervention.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card__impact">−30 hrs/mo</span>
+        <h3 class="card__title">Automated Offboarding Management</h3>
+        <p class="card__text">End-to-end automation for employee offboarding tasks, cutting ~60 minutes of hands-on work per resource for the Service Desk team.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card__impact">self-healing</span>
+        <h3 class="card__title">IIS Auto-Reset &amp; Incident Management</h3>
+        <p class="card__text">A Python–PowerShell workflow that detects and resolves IIS failures automatically, logging the incident record for tracking as it closes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="education">
+  <div class="wrap">
+    <p class="kicker reveal">Education &amp; Certifications</p>
+    <h2 class="section__title reveal">Foundations</h2>
+    <div class="edu-row">
+      <div class="edu-card reveal">
+        <p class="edu-card__k">Degree</p>
+        <p class="edu-card__v">B.E., Mechanical Engineering</p>
+        <p class="edu-card__sub">RMK College of Engineering &amp; Technology, Chennai · 2015–2019</p>
+      </div>
+      <div class="edu-card reveal">
+        <p class="edu-card__k">Certifications</p>
+        <p class="edu-card__v">SSIS · Django · Data Structures &amp; Algorithms</p>
+        <p class="edu-card__sub">Udemy &amp; Scaler</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt contact" id="contact">
+  <div class="wrap">
+    <div class="status-badge reveal"><span class="dot" style="animation:none;box-shadow:none;"></span> Currently open to new roles</div>
+    <h2 class="section__title reveal">Let's talk about what you're trying to automate</h2>
+    <p class="section__lead reveal" style="margin-left:auto;margin-right:auto;text-align:center;">Whether it's an agentic system, an SRE problem, or a pile of manual tickets — happy to dig in.</p>
+    <div class="contact__links reveal">
+      <a class="btn-solid" href="mailto:rammechk@gmail.com">rammechk@gmail.com</a>
+      <a class="btn-outline" href="tel:+919629396764">+91 96293 96764</a>
+      <a class="btn-outline" href="https://www.linkedin.com/in/ramkumar-haribaskar/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Ramkumar Haribaskar · built with Python-grade attention to detail
+</footer>
+
+<script>
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  if(navToggle){
+    navToggle.addEventListener('click',()=>nav.classList.toggle('is-open'));
+  }
+
+  // scroll reveal — progressive enhancement only.
+  // Content is visible by default in CSS; we only add the hidden
+  // "pre" state here if the browser can actually animate it back in,
+  // so a JS error or missing API never leaves content invisible.
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  try{
+    const revealEls = document.querySelectorAll('.reveal');
+    if(!reduceMotion && 'IntersectionObserver' in window){
+      revealEls.forEach(el=>el.classList.add('pre'));
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      },{threshold:0.12});
+      revealEls.forEach(el=>io.observe(el));
+      // safety net: never leave anything stuck hidden
+      setTimeout(()=>revealEls.forEach(el=>el.classList.add('is-visible')), 4000);
+    }
+  } catch(e){ /* fail safe: content stays visible by default */ }
+
+  // terminal log animation
+  const lines = [
+    {t:'$ watch --targets cmdb,certs,disks,iis', cls:'dim'},
+    {t:'[06:02:11] CHECK   cmdb · asset SAP-DB07 end-of-support in 30d'},
+    {t:'[06:02:11] ACTION  alert sent -> infra-owners              done', cls:'ok'},
+    {t:'[06:02:42] CHECK   cert  · api.internal.corp expires in 4d'},
+    {t:'[06:02:42] ACTION  renewal ticket opened                   done', cls:'ok'},
+    {t:'[06:03:15] ALERT   disk  · WEB-12 at 91% capacity', cls:'warn'},
+    {t:'[06:03:16] ACTION  rundeck::cleanup_job triggered           done', cls:'ok'},
+    {t:'[06:04:02] INCIDENT iis-pool-03 not responding', cls:'warn'},
+    {t:'[06:04:03] ACTION  auto-restart::iis_pool                  done', cls:'ok'},
+    {t:'[06:04:05] RESOLVED  INC0084421 closed · MTTR 00:00:04', cls:'ok'},
+  ];
+
+  const consoleBody = document.getElementById('consoleBody');
+
+  function renderStatic(){
+    consoleBody.innerHTML = lines.map(l=>`<div class="${l.cls||''}">${l.t}</div>`).join('');
+  }
+
+  if(reduceMotion){
+    renderStatic();
+  } else {
+    let lineIndex = 0, charIndex = 0;
+    let shown = [];
+    const typeSpeed = 16;
+    const linePause = 260;
+    const loopPause = 2400;
+
+    function tick(){
+      if(lineIndex >= lines.length){
+        setTimeout(()=>{
+          shown = [];
+          lineIndex = 0;
+          charIndex = 0;
+          consoleBody.innerHTML = '';
+          tick();
+        }, loopPause);
+        return;
+      }
+      const current = lines[lineIndex];
+      charIndex++;
+      const partial = current.t.slice(0, charIndex);
+      const done = shown.map(l=>`<div class="${l.cls||''}">${l.t}</div>`).join('');
+      consoleBody.innerHTML = done + `<div class="${current.cls||''}">${partial}<span class="cursor"></span></div>`;
+      consoleBody.scrollTop = consoleBody.scrollHeight;
+
+      if(charIndex >= current.t.length){
+        shown.push(current);
+        lineIndex++;
+        charIndex = 0;
+        setTimeout(tick, linePause);
+      } else {
+        setTimeout(tick, typeSpeed);
+      }
+    }
+    tick();
+  }
+</script>
 
 </body>
 </html>
-
-
